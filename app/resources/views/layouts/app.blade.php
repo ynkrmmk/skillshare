@@ -55,6 +55,12 @@
                                 </a>
                             <li class="nav-item dropdown">
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                @can('isAdmin')
+                                    <form action="{{ route('logout') }}" method="post">
+                                        @csrf
+                                        <input type="submit" class="dropdown-item" value="{{ __('ログアウト') }}">
+                                    </form>
+                                @else
                                     <a class="dropdown-item" href="/users">
                                         {{ __('マイページ') }}
                                     </a>
@@ -62,6 +68,7 @@
                                         @csrf
                                     <input type="submit" class="dropdown-item" value="{{ __('ログアウト') }}">
                                     </form>
+                                @endcan
                                 </div>
                             </li>
                         @endguest

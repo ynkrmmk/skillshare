@@ -13,7 +13,17 @@
         <div class="col-5 mt-4">
             <p class="card-text">{{$user->name}}</p>
         </div>
+
+
     </div>
+
+    <form action="/users/{{$user->id}}" method="POST">
+    @method('DELETE')
+    @csrf
+        <div class="row justify-content-end">
+            <input type="submit" class="btn btn-danger mt-3" value="利用停止">
+        </div>
+    </form>
 
 
     <div class="row justify-content-center mt-4">
@@ -41,7 +51,7 @@
             <thead>
                 <tr>
                 <th>日付</th>
-                <th>内容</th>
+                <th>違反内容</th>
                 <th>報告ユーザー</th>
                 </tr>
             </thead>

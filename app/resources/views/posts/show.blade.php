@@ -40,7 +40,6 @@
             <a href="{{ route('login') }}" class="btn btn-danger">違反報告</a>
             <div>
                 <a href="{{ route('login') }}" class="btn btn-primary">依頼する</a>
-                <a href="{{ route('login') }}" class="btn btn-secondary">依頼取消</a>
             </div>
         </div>
     @else
@@ -48,7 +47,6 @@
             <a href="{{route('violations.create', $post->id)}}" class="btn btn-danger">違反報告</a>
             <div>
                 <a href="{{route('offers.create', $post->id)}}" class="btn btn-primary">依頼する</a>
-                <a href="" class="btn btn-secondary">依頼取消</a>
             </div>
         </div>
     @endif

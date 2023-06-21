@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,3 +25,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'PostController@index')->name('posts.index');
 Route::post('/register', 'RegisterController@create')->name('register.create');
 Route::post('/posts/more', 'PostController@more')->name('posts.more');
+
+Route::get('/users/trying/{post}', [PostController::class, 'trying'])->name('posts.trying');
+Route::get('/users/complete/{post}', [PostController::class, 'complete'])->name('posts.complete');

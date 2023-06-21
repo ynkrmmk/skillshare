@@ -20,15 +20,7 @@
         <div>
             <div class="row justify-content-center">
                 <a href="users/{{Auth::id()}}/edit" class="btn btn-primary mt-3">編集</a>
-            </div>
-            
-            <form action="/users/{{Auth::id()}}" method="POST">
-            @method('DELETE')
-            @csrf
-                <div class="row justify-content-center">
-                    <input type="submit" class="btn btn-danger mt-3" value="削除する">
-                </div>
-            </form>
+            </div>            
         </div>
     </div>
 
@@ -61,9 +53,18 @@
                 <div class="card" style="width: 20rem;">
                     <img src="{{ Storage::url($post->image) }}" style="object-fit:cover; width: 100%; height: 15rem;" class="card-img-top" alt="">
                     <div class="card-body">
-                    <h5 class="card-title">{{$post->title}}</h5>
-                    <p class="card-text">￥{{$post->price}}</p>
-                    <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
+                        <h5 class="card-title">{{$post->title}}</h5>
+                        <p class="card-text">￥{{$post->price}}</p>
+                        <div class="justify-content-between">
+                            <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
+                            @if($post->status == 0)
+                            <a href="{{ route('posts.trying', $post->id) }}" class="btn btn-success">依頼を受ける</a>
+                            @elseif($post->status == 1)
+                            <button type="button" class="btn btn-danger" disabled>実行中</button>
+                            @else
+                            <button type="button" class="btn btn-secondary" disabled>完了</button>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,9 +81,18 @@
                 <div class="card" style="width: 20rem;">
                     <img src="{{ Storage::url($post->image) }}" style="object-fit:cover; width: 100%; height: 15rem;" class="card-img-top" alt="">
                     <div class="card-body">
-                    <h5 class="card-title">{{$post->title}}</h5>
-                    <p class="card-text">￥{{$post->price}}</p>
-                    <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
+                        <h5 class="card-title">{{$post->title}}</h5>
+                        <p class="card-text">￥{{$post->price}}</p>
+                        <div class="justify-content-between">
+                            <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
+                            @if($post->status == 0)
+                            <button type="button" class="btn btn-success" disabled>依頼中</button>
+                            @elseif($post->status == 1)
+                            <a href="{{ route('posts.complete', $post->id) }}" class="btn btn-danger">完了</a>
+                            @else
+                            <button type="button" class="btn btn-secondary" disabled>完了</button>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

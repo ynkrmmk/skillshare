@@ -24,7 +24,7 @@ class PostController extends Controller
         $start = $request->start;
         $end = $request->end;
 
-        $query = Post::orderBy('created_at', 'desc');
+        $query = Post::orderBy('created_at', 'desc')->where('status', '=', 0);
 
         $violation_posts = DB::table('violations')
         ->select('posts.*')
@@ -212,4 +212,27 @@ class PostController extends Controller
         $post->delete();
         return redirect('/posts');
     }
+
+
+
+
+
+    public function trying(Post $post)
+    {
+        $post->status = 1;
+        $post->save();
+        
+        return redirect('/users');
+    }
+
+    public function complete(Post $post)
+    {
+
+        $post->status = 2;
+        $post->save();
+    
+        return redirect('/users');
+    }
+
+
 }

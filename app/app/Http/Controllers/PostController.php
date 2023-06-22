@@ -24,7 +24,7 @@ class PostController extends Controller
         $start = $request->start;
         $end = $request->end;
 
-        $query = Post::orderBy('created_at', 'desc')->where('status', '=', 0);
+        $query = Post::orderBy('created_at', 'desc')->where('status', '==', 0);
 
         $violation_posts = DB::table('violations')
         ->select('posts.*')

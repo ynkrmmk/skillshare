@@ -58,9 +58,9 @@
                         <div class="justify-content-between">
                             <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
                             @if($post->status == 0)
-                            <a href="{{ route('posts.trying', $post->id) }}" class="btn btn-success">依頼を受ける</a>
+                            <a href="{{ route('posts.trying', $post->id) }}" class="btn btn-success">掲載中</a>
                             @elseif($post->status == 1)
-                            <button type="button" class="btn btn-danger" disabled>実行中</button>
+                            <button type="button" class="btn btn-danger" disabled>進行中</button>
                             @else
                             <button type="button" class="btn btn-secondary" disabled>完了</button>
                             @endif
@@ -86,9 +86,9 @@
                         <div class="justify-content-between">
                             <a href="/posts/{{$post->id}}" class="btn btn-primary">詳しくみる</a>
                             @if($post->status == 0)
-                            <button type="button" class="btn btn-success" disabled>依頼中</button>
+                            <button type="button" class="btn btn-success" disabled>掲載中</button>
                             @elseif($post->status == 1)
-                            <a href="{{ route('posts.complete', $post->id) }}" class="btn btn-danger">完了</a>
+                            <a href="{{ route('posts.complete', $post->id) }}" class="btn btn-danger">進行中</a>
                             @else
                             <button type="button" class="btn btn-secondary" disabled>完了</button>
                             @endif
